@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nuestra Historia — Jean &amp; Clarice</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Botón de música (flotante, siempre visible) -->
+  <button id="btn-musica" class="btn-musica" title="Reproducir/Pausar música">🎵 Música</button>
+  <audio id="audio-fondo" src="musica/nuestra-cancion.mp3" loop></audio>
+
+  <!-- ===================== PORTADA ===================== -->
+  <div id="portada" class="portada">
+    <div class="libro-cerrado">
+      <div class="tapa">
+        <p class="linea-superior">SEIS MESES ESCRIBIENDO ESTA HISTORIA</p>
+        <h1 class="titulo-portada">Nuestra Historia</h1>
+        <p class="nombres-portada">Jean y Clarice</p>
+        <p class="subtitulo-portada">Para ti, mi niña preciosa ❤️</p>
+        <button id="btn-abrir" class="btn-abrir">✨ Abrir nuestro libro</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== LIBRO ===================== -->
+  <div id="libro" class="libro oculto">
+
+    <!-- PÁGINA 1 — PARA TI -->
+    <section class="pagina activa" data-pagina="1">
+      <div class="contenido-pagina">
+        <p class="eyebrow">13 de septiembre</p>
+        <h2 class="titulo-pagina">Para ti</h2>
+        <p class="texto-pagina">
+          Si estás leyendo esto, abriste nuestro pequeño libro. Quería celebrar
+          nuestros seis meses con algo distinto, algo que pudieras guardar y
+          volver a abrir cada vez que lo necesites.
+        </p>
+        <p class="texto-pagina">
+          Aquí adentro está cómo empezó todo, algunas de las cosas que más me
+          gustan de nosotros, los recuerdos que ya son mis favoritos, y todo
+          lo que todavía nos falta por vivir.
+        </p>
+        <p class="firma">Con todo mi cariño, Jean 💕</p>
+        <div class="nav-pagina">
+          <button class="btn-nav btn-siguiente">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 2 — CÓMO COMENZÓ TODO -->
+    <section class="pagina" data-pagina="2">
+      <div class="contenido-pagina">
+        <p class="eyebrow">el instituto, la clase de inglés</p>
+        <h2 class="titulo-pagina">Cómo comenzó todo 💕</h2>
+        <p class="texto-pagina">
+          Te vi por primera vez el día de inducción, y para mí fue amor a
+          primera vista. Después coincidimos en la clase de inglés, pero me
+          daba demasiada vergüenza hablarte.
+        </p>
+        <p class="texto-pagina">
+          Un día el profesor nos sentó juntos, sin saber lo que estaba
+          empezando. Desde esa clase, todo cambió. Y desde entonces, cada
+          momento contigo se ha vuelto especial.
+        </p>
+        <div class="nav-pagina">
+          <button class="btn-nav btn-anterior">← Volver</button>
+          <button class="btn-nav btn-siguiente">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 3 — LO QUE AMO DE TI -->
+    <section class="pagina" data-pagina="3">
+      <div class="contenido-pagina">
+        <p class="eyebrow">cosas que amo de ti</p>
+        <h2 class="titulo-pagina">Lo que amo de ti ❤️</h2>
+        <ul class="lista-amor">
+          <li class="item-amor"><span class="bullet">💖</span> Tu forma de ser, eres muy increible.</li>
+          <li class="item-amor"><span class="bullet">💖</span> La forma en que me amas.</li>
+          <li class="item-amor"><span class="bullet">💖</span> Tus detalles que siempre me hacen emocionar y me encantan.</li>
+          <li class="item-amor"><span class="bullet">💖</span> La manera en que me apoyas en cada momento.</li>
+          <li class="item-amor"><span class="bullet">💖</span> Los momentos que compartimos, grandes y pequeños.</li>
+        </ul>
+        <div class="nav-pagina">
+          <button class="btn-nav btn-anterior">← Volver</button>
+          <button class="btn-nav btn-siguiente">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 4 — NUESTROS RECUERDOS -->
+    <section class="pagina" data-pagina="4">
+      <div class="contenido-pagina">
+        <p class="eyebrow">algunos momentos</p>
+        <h2 class="titulo-pagina">Nuestros recuerdos 📸</h2>
+        <div class="galeria">
+          <figure class="foto-marco">
+            <img src="imagenes/cine.jpg" alt="Jean y Clarice en el cine">
+            <figcaption>Ese dia fue el mejor de todos</figcaption>
+          </figure>
+          <figure class="foto-marco">
+            <img src="imagenes/abrazo.jpg" alt="Jean y Clarice abrazados">
+            <figcaption>un abrazo tuyo</figcaption>
+          </figure>
+          <figure class="foto-marco">
+            <img src="imagenes/flores.jpg" alt="Clarice con un ramo de flores">
+            <figcaption>La primera foto juntos</figcaption>
+          </figure>
+          <figure class="foto-marco">
+            <img src="imagenes/cerca.jpg" alt="Jean y Clarice muy de cerca">
+            <figcaption>La foto que mas me gusta porque tus ojos se ven preciosos</figcaption>
+          </figure>
+        </div>
+        <div class="nav-pagina">
+          <button class="btn-nav btn-anterior">← Volver</button>
+          <button class="btn-nav btn-siguiente">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 5 — TIEMPO JUNTOS -->
+    <section class="pagina" data-pagina="5">
+      <div class="contenido-pagina">
+        <p class="eyebrow">Nuestro tiempo juntos</p>
+        <h2 class="titulo-pagina">❤️ Llevamos juntos ❤️</h2>
+        <div class="contador">
+          <div class="contador-item"><span id="c-dias">0</span><small>Días</small></div>
+          <div class="contador-item"><span id="c-horas">0</span><small>Horas</small></div>
+          <div class="contador-item"><span id="c-min">0</span><small>Minutos</small></div>
+          <div class="contador-item"><span id="c-seg">0</span><small>Segundos</small></div>
+        </div>
+        <p class="subtexto-contador">Y cada segundo contigo es un regalo</p>
+        <div class="nav-pagina">
+          <button class="btn-nav btn-anterior">← Volver</button>
+          <button class="btn-nav btn-siguiente">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 6 — UNA CARTA PARA TI -->
+    <section class="pagina" data-pagina="6">
+      <div class="contenido-pagina">
+        <p class="eyebrow">Para tu corazón</p>
+        <h2 class="titulo-pagina">Tengo algo que decirte... 💌</h2>
+
+        <button id="btn-leer-carta" class="btn-abrir btn-carta">Leer carta 💌</button>
+
+        <div id="carta" class="carta oculto">
+          <p class="saludo-carta">Mi amor,</p>
+          <p class="texto-carta">
+            Estos seis meses contigo han sido los más hermosos de mi vida. No
+            imaginaba que podría sentirme así, que existiera alguien que me
+            completara de esta manera.
+          </p>
+          <p class="texto-carta">
+            Cada día a tu lado es un regalo. Tu sonrisa brilla más que
+            cualquier cosa en el mundo, y cuando veo tus ojos, siento que he
+            encontrado exactamente lo que buscaba sin saber que lo buscaba.
+          </p>
+          <p class="texto-carta">
+            Quiero seguir escribiendo esta historia contigo, vivir cada
+            momento, conocer cada rincón de tu corazón, y estar ahí en cada
+            uno de tus días, buenos y difíciles.
+          </p>
+          <p class="texto-carta">
+            Eres mi persona favorita, mi razón de sonreír, mi hogar en forma
+            humana.
+          </p>
+          <p class="firma-carta">Te amo con todo mi ser,<br>Jean 💕</p>
+        </div>
+
+        <div class="nav-pagina">
+          <button class="btn-nav btn-anterior">← Volver</button>
+          <button class="btn-nav btn-siguiente">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 7 — LUGARES POR CONOCER -->
+    <section class="pagina" data-pagina="7">
+      <div class="contenido-pagina">
+        <p class="eyebrow">Aventuras que faltan</p>
+        <h2 class="titulo-pagina">Lugares por conocer ✨</h2>
+        <p class="subtexto-lugares">Todavía nos quedan muchos lugares por visitar juntos...</p>
+        <div class="tarjetas-futuro">
+          <div class="tarjeta-futuro">🏖️ Ir a la playa</div>
+          <div class="tarjeta-futuro">🏔️ Subir una montaña</div>
+          <div class="tarjeta-futuro">🌃 Conocer una ciudad y pais nuevo</div>
+          <div class="tarjeta-futuro">🌲 Acampar juntos</div>
+          <div class="tarjeta-futuro">🏡 Ir a un lugar magico e increible</div>
+          <div class="tarjeta-futuro">✨ Donde sea, contigo</div>
+        </div>
+        <div class="nav-pagina">
+          <button class="btn-nav btn-anterior">← Volver</button>
+          <button class="btn-nav btn-siguiente">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA FINAL -->
+    <section class="pagina pagina-final" data-pagina="8">
+      <div class="contenido-pagina">
+        <div class="particulas" id="particulas"></div>
+
+        <p class="final-linea1">Y esta historia todavía no termina...</p>
+        <p class="final-linea2 oculto">Porque todavía nos quedan muchas páginas por escribir juntos. 💖</p>
+        <p class="final-linea3 oculto">Feliz aniversario, mi amor ✨</p>
+
+        <div class="foto-final">
+          <img src="imagenes/abrazo.jpg" alt="Jean y Clarice">
+        </div>
+
+        <div class="nav-pagina">
+          <button class="btn-nav btn-anterior">← Volver</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+/* =========================================================
+   VARIABLES DE COLOR — paleta romántica
+   ========================================================= */
+:root {
+  --vino: #5e1a2b;
+  --vino-oscuro: #3b0f1a;
+  --rosa-oscuro: #a44a63;
+  --rosa-suave: #e8b4c0;
+  --crema: #f8ecd9;
+  --crema-clara: #fffaf0;
+  --cafe: #6b4226;
+  --dorado: #c9a24b;
+  --dorado-suave: #e3c98e;
+  --texto-oscuro: #3b241a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: linear-gradient(160deg, var(--vino-oscuro), var(--vino) 60%, var(--cafe));
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--texto-oscuro);
+}
+
+.oculto {
+  display: none !important;
+}
+
+/* =========================================================
+   BOTÓN DE MÚSICA (flotante)
+   ========================================================= */
+.btn-musica {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 999;
+  background: var(--dorado-suave);
+  border: 1px solid var(--dorado);
+  color: var(--vino-oscuro);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.btn-musica:hover {
+  transform: scale(1.05);
+  background: var(--dorado);
+}
+.btn-musica.sonando {
+  background: var(--rosa-oscuro);
+  color: var(--crema-clara);
+}
+
+/* =========================================================
+   PORTADA
+   ========================================================= */
+.portada {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  perspective: 1800px;
+}
+
+.libro-cerrado {
+  width: 380px;
+  max-width: 90vw;
+  height: 540px;
+  max-height: 80vh;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.tapa {
+  width: 100%;
+  height: 100%;
+  background: var(--crema);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(201,162,75,0.15), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(94,26,43,0.08), transparent 60%);
+  border: 2px solid var(--dorado);
+  border-radius: 6px 14px 14px 6px;
+  box-shadow:
+    0 25px 50px rgba(0,0,0,0.5),
+    inset 0 0 0 6px var(--crema-clara),
+    inset 0 0 0 8px var(--dorado-suave);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 30px;
+  gap: 18px;
+  transform-origin: left center;
+  transition: transform 1.3s cubic-bezier(0.65, 0, 0.35, 1);
+  position: relative;
+}
+
+/* lomo del libro, para dar sensación de volumen */
+.tapa::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  background: linear-gradient(to right, var(--vino), var(--vino-oscuro));
+  border-radius: 6px 0 0 6px;
+  box-shadow: inset -3px 0 6px rgba(0,0,0,0.4);
+}
+
+.libro-cerrado.abriendo .tapa {
+  transform: rotateY(-140deg);
+}
+
+.linea-superior {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rosa-oscuro);
+  font-weight: 600;
+}
+
+.titulo-portada {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.2rem;
+  color: var(--vino);
+  line-height: 1;
+}
+
+.nombres-portada {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--vino);
+}
+
+.subtitulo-portada {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--cafe);
+  font-style: italic;
+}
+
+.btn-abrir {
+  margin-top: 10px;
+  background: var(--vino);
+  color: var(--crema-clara);
+  border: 1px solid var(--dorado);
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.btn-abrir:hover {
+  transform: translateY(-3px);
+  background: var(--rosa-oscuro);
+}
+
+/* =========================================================
+   LIBRO ABIERTO — contenedor de páginas
+   ========================================================= */
+.libro {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+  perspective: 1400px;
+}
+
+.pagina {
+  width: 480px;
+  max-width: 92vw;
+  min-height: 560px;
+  background: var(--crema);
+  background-image: radial-gradient(circle at 15% 10%, rgba(201,162,75,0.12), transparent 55%);
+  border: 2px solid var(--dorado);
+  border-radius: 6px 14px 14px 6px;
+  box-shadow:
+    0 25px 45px rgba(0,0,0,0.45),
+    inset 0 0 0 5px var(--crema-clara);
+  position: absolute;
+  padding: 44px 34px;
+  display: flex;
+  align-items: center;
+  transform-origin: left center;
+  backface-visibility: hidden;
+  transition: transform 1.1s cubic-bezier(0.45, 0.05, 0.35, 1), opacity 0.4s ease, box-shadow 1.1s ease;
+}
+
+/* Sombra de "pliegue" que aparece a mitad del giro, simulando la hoja doblándose */
+.pagina::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to right, rgba(0,0,0,0.35), transparent 40%);
+  opacity: 0;
+  transition: opacity 1.1s ease;
+  pointer-events: none;
+}
+
+.pagina.girando::after {
+  opacity: 1;
+}
+
+.pagina::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: linear-gradient(to right, var(--vino), var(--vino-oscuro));
+  border-radius: 6px 0 0 6px;
+  box-shadow: inset -3px 0 6px rgba(0,0,0,0.4);
+}
+
+/* Estado por defecto: páginas futuras esperan giradas a la derecha (ocultas) */
+.pagina {
+  transform: rotateY(0deg);
+  z-index: 1;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pagina.pasada {
+  transform: rotateY(-180deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pagina.esperando {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pagina.activa {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.contenido-pagina {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.eyebrow {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.3rem;
+  color: var(--rosa-oscuro);
+  margin-bottom: -6px;
+}
+
+.titulo-pagina {
+  font-family: 'Playfair Display', serif;
+  color: var(--vino);
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--dorado-suave);
+  padding-bottom: 10px;
+}
+
+.firma {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: var(--rosa-oscuro);
+  margin-top: 4px;
+}
+
+.texto-pagina {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--texto-oscuro);
+}
+
+.texto-pequeno {
+  font-size: 0.9rem;
+  color: var(--cafe);
+  font-style: italic;
+}
+
+.nav-pagina {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.btn-nav {
+  background: transparent;
+  border: 1px solid var(--vino);
+  color: var(--vino);
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.btn-nav:hover {
+  background: var(--vino);
+  color: var(--crema-clara);
+}
+.btn-siguiente {
+  margin-left: auto;
+}
+
+/* =========================================================
+   GALERÍA DE FOTOS
+   ========================================================= */
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.foto-marco {
+  width: 150px;
+  background: var(--crema-clara);
+  border: 6px solid var(--crema-clara);
+  outline: 1px solid var(--dorado-suave);
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  padding-bottom: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.foto-marco:hover {
+  transform: rotate(-1deg) scale(1.05);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.35);
+}
+.foto-marco img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px 2px 0 0;
+}
+.foto-marco {
+  position: relative;
+  cursor: pointer;
+}
+
+.foto-marco figcaption {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.15rem;
+  color: var(--crema-clara);
+  text-align: center;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(94, 26, 43, 0.88);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 2px 2px 0 0;
+}
+
+.foto-marco.mostrando-mensaje figcaption {
+  opacity: 1;
+}
+.foto-centrada {
+  flex-basis: 100%;
+  margin: 0 auto;
+}
+
+/* placeholder cuando aún no existe la imagen */
+.foto-vacia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--rosa-suave), var(--dorado-suave));
+}
+.foto-vacia img {
+  display: none;
+}
+.foto-vacia::after {
+  content: "📷";
+  font-size: 2rem;
+}
+
+/* =========================================================
+   LO QUE AMO DE TI
+   ========================================================= */
+.lista-amor {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-amor {
+  font-size: 1.1rem;
+  background: var(--crema-clara);
+  border-left: 4px solid var(--rosa-oscuro);
+  padding: 10px 14px;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateX(-15px);
+  animation: aparecerItem 0.6s ease forwards;
+}
+.item-amor:nth-child(1) { animation-delay: 0.1s; }
+.item-amor:nth-child(2) { animation-delay: 0.35s; }
+.item-amor:nth-child(3) { animation-delay: 0.6s; }
+.item-amor:nth-child(4) { animation-delay: 0.85s; }
+.item-amor:nth-child(5) { animation-delay: 1.1s; }
+
+@keyframes aparecerItem {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* =========================================================
+   CONTADOR DE TIEMPO JUNTOS
+   ========================================================= */
+.contador {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.contador-item {
+  background: var(--crema-clara);
+  border: 1px solid var(--dorado-suave);
+  border-radius: 10px;
+  padding: 14px 10px;
+  min-width: 70px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.contador-item span {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--vino);
+}
+.contador-item small {
+  font-size: 0.75rem;
+  color: var(--cafe);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.subtexto-contador {
+  font-size: 1rem;
+  color: var(--cafe);
+  font-style: italic;
+  text-align: center;
+}
+
+/* =========================================================
+   CARTA
+   ========================================================= */
+.btn-carta {
+  align-self: center;
+}
+
+.carta {
+  background: var(--crema-clara);
+  border: 1px solid var(--dorado-suave);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+  animation: desplegarCarta 0.8s ease;
+  transform-origin: top center;
+}
+
+@keyframes desplegarCarta {
+  from { opacity: 0; transform: scaleY(0.3); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+.saludo-carta {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: var(--rosa-oscuro);
+  margin-bottom: 10px;
+}
+
+.texto-carta {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-style: italic;
+  color: var(--texto-oscuro);
+  margin-bottom: 12px;
+}
+
+.firma-carta {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.6rem;
+  color: var(--rosa-oscuro);
+  margin-top: 10px;
+}
+
+/* =========================================================
+   TARJETAS DE FUTURO
+   ========================================================= */
+.tarjetas-futuro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tarjeta-futuro {
+  background: var(--crema-clara);
+  border: 1px solid var(--dorado-suave);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease;
+}
+.tarjeta-futuro:hover {
+  transform: translateX(6px);
+}
+
+.subtexto-lugares {
+  font-size: 1rem;
+  color: var(--cafe);
+  font-style: italic;
+  text-align: center;
+}
+
+/* =========================================================
+   PÁGINA FINAL
+   ========================================================= */
+.pagina-final .contenido-pagina {
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.final-linea1,
+.final-linea2,
+.final-linea3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--vino);
+}
+
+.final-linea3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.4rem;
+  color: var(--rosa-oscuro);
+}
+
+.foto-final {
+  width: 200px;
+  height: 200px;
+  border: 6px solid var(--crema-clara);
+  outline: 1px solid var(--dorado-suave);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  margin: 10px auto;
+}
+.foto-final img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.particulas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particula {
+  position: absolute;
+  bottom: -20px;
+  animation: flotar linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes flotar {
+  to {
+    transform: translateY(-620px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 480px) {
+  .titulo-portada { font-size: 2.4rem; }
+  .pagina {
+    min-height: 500px;
+    padding: 32px 20px 24px;
+  }
+  .titulo-pagina { font-size: 1.5rem; }
+  .texto-pagina { font-size: 1.02rem; }
+
+  /* Galería de fotos: más compacta y con espacio para las leyendas */
+  .galeria {
+    gap: 10px;
+    justify-content: center;
+  }
+  .foto-marco {
+    width: 42%;
+    min-width: 130px;
+  }
+  .foto-marco img {
+    height: 130px;
+  }
+  .foto-marco figcaption {
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
+  .contador-item { min-width: 60px; padding: 10px 6px; }
+  .contador-item span { font-size: 1.3rem; }
+
+  /* Botones de navegación: uno debajo del otro para que no choquen con nada */
+  .nav-pagina {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-nav {
+    width: 100%;
+  }
+  .btn-siguiente {
+    margin-left: 0;
+  }
+}
